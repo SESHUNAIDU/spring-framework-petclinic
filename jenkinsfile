@@ -4,8 +4,11 @@ node('MVN'){
         git branch: 'dev', url: 'https://github.com/SESHUNAIDU/spring-framework-petclinic.git'
     }
     stage('BUILD'){
-        sh 'mvn package'
+        sh 'mvn install'
     }
+	stage('Dummy'){
+		sh 'pwd'
+	}
     stage('Archive'){
 		archive 'target//*.jar'
 		junit 'target/surefire-reports/*.xml'
